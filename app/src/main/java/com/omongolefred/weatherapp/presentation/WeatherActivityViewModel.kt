@@ -44,8 +44,8 @@ class WeatherActivityViewModel @Inject constructor(
         Resource.Loading
         viewModelScope.launch( Dispatchers.IO + errorHandler ) {
            try {
-               prefRepository.storeCityName( cityName )
                val result = getCityWeatherInfoUseCase.invoke( cityName )
+               prefRepository.storeCityName( cityName )
                _weatherData.value = Resource.Success( result )
            } catch ( ex: Exception ) {
                when( ex ) {
